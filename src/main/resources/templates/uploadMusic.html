@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<!-- <link rel="stylesheet" type="text/css" href="../static/css/styles.css" th:href="@{/css/styles.css}" /> -->
+<title>Music Upload</title>
+</head>
+
+<script>
+	if (window.history.replaceState) {
+		window.history.replaceState(null, null, window.location.href);
+	}
+</script>
+
+
+<body>
+
+	<h1 class="uploadWel">Welcome to File Upload</h1>
+
+	<div id="controle1">
+		<p>
+			<a href="/home">Home Page</a>
+		</p>
+	</div>
+
+	<form target="about:blank" th:action="@{files/upload}  " method="post"
+		enctype="multipart/form-data">
+		<input type="file" value="file" name="file"> <input
+			type="submit" value="Submit">
+
+	</form>
+
+</body>
+</html>
