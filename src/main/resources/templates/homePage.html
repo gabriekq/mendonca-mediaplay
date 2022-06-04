@@ -4,13 +4,20 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body>
+<body onload="loadTable()" >
+<script type="text/javascript"   src="../static/javascript/scriptFunction.js" th:src="@{/javascript/scriptFunction.js}" ></script>
 <h1>Welcome User</h1>
 
-<audio autoplay="autoplay" controls="controls">
-<source src="http://localhost:8080/files/1" type="audio/mp3" />
-seu navegador não suporta HTML5
-</audio>
+<table id="music-table"  >
+     <tr>
+      <th >Id</th>
+      <th>Music Name</th>  
+       <th>Player</th> 
+    </tr>
+
+</table>
+
+
 
 
 </body>

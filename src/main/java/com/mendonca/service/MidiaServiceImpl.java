@@ -1,6 +1,7 @@
 package com.mendonca.service;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,5 +29,10 @@ public class MidiaServiceImpl implements MidiaService {
 	public Optional<Music> getOneMusic(int id){
 	 return midiaRepository.findById(id);
 	}
+
+	public List<Music> getAllMusics() {
+		return midiaRepository.findAll();
+	}
+
 	
 }

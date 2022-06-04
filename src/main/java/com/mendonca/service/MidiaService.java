@@ -1,6 +1,7 @@
 package com.mendonca.service;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -13,6 +14,7 @@ public interface MidiaService {
 	
 	public Optional<Music> getOneMusic(int id);
 	
+	public List<Music> getAllMusics();
 	
 	
 }

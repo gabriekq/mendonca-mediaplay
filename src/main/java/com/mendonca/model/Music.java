@@ -59,7 +59,5 @@ public class Music {
 		this.musicOwner = musicOwner;
 	}
 	
-	
-	
-	
+
 }

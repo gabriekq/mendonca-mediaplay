@@ -1,6 +1,7 @@
 package com.mendonca.controller;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ import com.mendonca.model.Music;
 import com.mendonca.service.MidiaService;
 
 @RestController
-@RequestMapping("files")
+@RequestMapping("media")
 public class MusicControler {
 
 	@Autowired
@@ -36,23 +37,30 @@ public class MusicControler {
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<Resource> getMusic(@PathVariable(required = true) String id){
-	  Optional<Music> musicOptional =   	midiaService.getOneMusic(Integer.parseInt(id));
+	  Optional<Music> musicOptional = midiaService.getOneMusic(Integer.parseInt(id));
 		
 		if(musicOptional.isPresent()) {
 			Music music = musicOptional.get();
 			return ResponseEntity.ok()
 					.contentType(MediaType.parseMediaType(music.getMusicType()))
 					.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename= "+music.getMusicName())
-					.body(new ByteArrayResource(music.getMusicData()));
-			
-			
+					.body(new ByteArrayResource(music.getMusicData()));	
 		}
-	  
-		
 		return null;
 	}
 	
-	
+	@GetMapping("/musicInfo")
+	public ResponseEntity<List> fetchMusics(){
+		
+		List<Music> musics =  midiaService.getAllMusics();
+		
+		if(!musics.isEmpty()) {
+			return ResponseEntity.ok(musics);
+		}else {
+		   return ResponseEntity.noContent().build();
+		}
+
+	}
 	
 	
 }
