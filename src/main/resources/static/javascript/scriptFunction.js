@@ -21,7 +21,9 @@ function addMusicTable(item,index){
 	
 	var urlMusicInfo ='http://' + document.URL.split('/')[2]+'/media/';
 	 var table = document.getElementById('music-table');
-	 var row = table.insertRow(index+1);
+	 var newIndex = index+1;
+	 
+	 var row = table.insertRow(newIndex);
 	 var colunm1 = row.insertCell(0);
 	 var colunm2 = row.insertCell(1);
 	 var colunm3 = row.insertCell(2);
@@ -29,8 +31,28 @@ function addMusicTable(item,index){
 	 colunm1.innerHTML = item.id;
 	 colunm2.innerHTML = item.musicName;	 
 	 // player colun
-	 var player = ' <audio autoplay="autoplay" controls="controls" preload="none" > <source src='+urlMusicInfo+item.id+' type="audio/mp3" /> your browser does not suport</audio>';
+	 var player = ' <audio autoplay="autoplay" onplaying="verifyPlaying('+newIndex+')"  controls preload="none" > <source src='+urlMusicInfo+item.id+' type="audio/mp3" /> your browser does not suport</audio>';
 	 colunm3.innerHTML = player;
 
 }
+
+function verifyPlaying(index){
+	
+	index = index -1;
+	var musics = document.getElementsByTagName('audio');
+	
+	for(indexMusic = 0 ; indexMusic < musics.length; indexMusic++  ){
+		
+		if(indexMusic != index ){
+			
+			if(!musics[indexMusic].paused){
+			  musics[indexMusic].pause();
+			}
+
+		}
+				
+	}
+	
+} 
+
 

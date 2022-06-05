@@ -1,0 +1,23 @@
+
+
+
+.container-home{
+	display: block;	
+	
+}
+
+.table{
+	text-align: center;
+	font-weight: bold;
+}
+
+.userName{
+	margin-left: 40%; 
+	margin-bottom: 30px;
+	font-family: cursive;
+}
+
+ th, td {
+  border:1px solid black;  
+  
+}
