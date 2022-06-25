@@ -14,14 +14,14 @@
 	th:href="@{/css/styles.css}" />
 <title>Mendonca Player</title>
 </head>
-<body onload="loadTable()">
+<body onload="loadMainPage()">
 	<script type="text/javascript"
 		src="../static/javascript/scriptFunction.js"
 		th:src="@{/javascript/scriptFunction.js}"></script>
 
 	<div class="container-home">
 
-		<h1 class="userName" >Welcome User</h1>
+		<h1 class="userName" id="currentUser" >Welcome</h1>
 		<table id="music-table" class="table table-primary table-striped">
 			<tr >
 				<th>Id</th>

@@ -1,4 +1,30 @@
 
+function loadMainPage(){
+	loadTable();
+	loadCurrentUser();
+}
+
+function loadCurrentUser(){
+	var urlCurrentUser = 'http://' + document.URL.split('/')[2]+'/media/userName';
+	var  currentUserName;
+	
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		 if (this.readyState == 4 && this.status == 200) {
+		      currentUserName = this.responseText;
+		    }
+		
+	}
+	
+	  xhttp.open("GET", urlCurrentUser, false);
+	  xhttp.send();
+	  
+	 var elem =  document.getElementById('currentUser');
+	 var newHtmlText = elem.getInnerHTML()+' '+currentUserName;
+	 elem.innerText = newHtmlText;
+
+}
+
 
 function loadTable(){
 	
@@ -31,7 +57,7 @@ function addMusicTable(item,index){
 	 colunm1.innerHTML = item.id;
 	 colunm2.innerHTML = item.musicName;	 
 	 // player colun
-	 var player = ' <audio autoplay="autoplay" onplaying="verifyPlaying('+newIndex+')"  controls preload="none" > <source src='+urlMusicInfo+item.id+' type="audio/mp3" /> your browser does not suport</audio>';
+	 var player = ' <audio onplaying="verifyPlaying('+newIndex+')"  controls preload="none" > <source src='+urlMusicInfo+item.id+' type="audio/mp3" /> your browser does not suport</audio>';
 	 colunm3.innerHTML = player;
 
 }

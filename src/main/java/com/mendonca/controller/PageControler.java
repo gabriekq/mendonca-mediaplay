@@ -1,5 +1,6 @@
 package com.mendonca.controller;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -7,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class PageControler {
 
 	
-	
+	@PreAuthorize("hasRole('USER')")
 	@RequestMapping("/home")
 	public String homePage() {
 		return "homePage";
