@@ -30,6 +30,7 @@ function loadTable(){
 	
 	var urlMusicInfo ='http://' + document.URL.split('/')[2]+'/media/musicInfo';
 	
+	
 	var xhttp = new XMLHttpRequest();
 	 xhttp.onreadystatechange = function() {
 		    if (this.readyState == 4 && this.status == 200) {
@@ -54,10 +55,14 @@ function addMusicTable(item,index){
 	 var colunm2 = row.insertCell(1);
 	 var colunm3 = row.insertCell(2);
 	 
-	 colunm1.innerHTML = item.id;
-	 colunm2.innerHTML = item.musicName;	 
+	 colunm1.innerHTML = item.idMusicName;
+	 colunm2.innerHTML = item.musicType;
+	 
+	 var musicToSearch = item.idMusicName;
+	 musicToSearch = musicToSearch.replaceAll(' ','_');
+	 
 	 // player colun
-	 var player = ' <audio onplaying="verifyPlaying('+newIndex+')"  controls preload="none" > <source src='+urlMusicInfo+item.id+' type="audio/mp3" /> your browser does not suport</audio>';
+	 var player = ' <audio onplaying="verifyPlaying('+newIndex+')"  controls preload="none" > <source src='+urlMusicInfo+musicToSearch+' type="audio/mp3" /> your browser does not suport</audio>';
 	 colunm3.innerHTML = player;
 
 }

@@ -12,15 +12,17 @@ import com.mendonca.config.SecurityConfiguration;
 import com.mendonca.controller.MusicControler;
 import com.mendonca.controller.PageControler;
 import com.mendonca.model.Music;
+import com.mendonca.model.OwnerMusic;
 import com.mendonca.model.User;
 import com.mendonca.repository.MidiaRepository;
+import com.mendonca.repository.OwnerMusicRepository;
 import com.mendonca.repository.UserRepository;
 import com.mendonca.service.MidiaServiceImpl;
 
 @SpringBootApplication
 @EnableAutoConfiguration
-@EnableJpaRepositories(basePackageClasses = {MidiaRepository.class,UserRepository.class})
-@EntityScan(basePackageClasses =  {Music.class,User.class})
+@EnableJpaRepositories(basePackageClasses = {MidiaRepository.class,UserRepository.class,OwnerMusicRepository.class})
+@EntityScan(basePackageClasses =  {Music.class,User.class,OwnerMusic.class})
 @ComponentScan( basePackageClasses = { PageControler.class,MusicControler.class,MidiaServiceImpl.class,SecurityConfiguration.class,UserDetailsService.class})
 public class MendoncaMediaApplication {
 

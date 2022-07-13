@@ -10,11 +10,11 @@ import com.mendonca.model.Music;
 
 public interface MidiaService {
 
-	public void saveMusic(MultipartFile multipartFile) throws IOException;
+	public void saveMusic(MultipartFile multipartFile,String ownerId) throws IOException;
 	
-	public Optional<Music> getOneMusic(int id);
+	public Optional<Music> getOneMusic(String id);
 	
-	public List<Music> getAllMusics();
+	public List<Music> getAllMusicsByOwner(String ownerId);
 	
 	
 }

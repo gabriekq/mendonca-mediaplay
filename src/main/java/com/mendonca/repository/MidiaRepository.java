@@ -7,10 +7,9 @@ import com.mendonca.model.Music;
 
 
 @Repository
-public interface MidiaRepository extends  JpaRepository<Music, Integer>   {
+public interface MidiaRepository extends  JpaRepository<Music, String>   {
 
 	
-	
-	
+
 	
 }

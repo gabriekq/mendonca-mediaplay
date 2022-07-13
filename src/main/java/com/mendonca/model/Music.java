@@ -1,30 +1,42 @@
 package com.mendonca.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.Basic;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 
 @Entity
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="idMusicName")
 public class Music {
-
+    // THIS ID IS GOING TO BE THE MUSIC NAME WITHOUT THE .MP3 PART
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
-	private String musicOwner;
+	private String idMusicName; 
+	
 	private String musicName;
     private String musicType;	
 	
 	@Lob
+	@Basic(fetch = FetchType.LAZY)
 	private byte musicData[];
 
-	public int getId() {
-		return id;
+	@ManyToMany
+	private List<OwnerMusic> owners = new ArrayList<OwnerMusic>();
+	
+	public String getIdMusicName() {
+		return idMusicName;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setIdMusicName(String idMusicName) {
+		this.idMusicName = idMusicName;
 	}
 
 	public String getMusicName() {
@@ -51,13 +63,16 @@ public class Music {
 		this.musicData = musicData;
 	}
 
-	public String getMusicOwner() {
-		return musicOwner;
+	public List<OwnerMusic> getOwners() {
+		return owners;
 	}
 
-	public void setMusicOwner(String musicOwner) {
-		this.musicOwner = musicOwner;
+	public void setOwners(ArrayList<OwnerMusic> owners) {
+		this.owners = owners;
 	}
 	
+	public void addOwner(OwnerMusic ownerMusic ) {
+		owners.add(ownerMusic);
+	}
 
 }
